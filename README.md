@@ -9,7 +9,7 @@
 
 -------------------------
 
-### Company Product Structure
+### Company Product Structure, Platform & Market Channel
 ![product_structure](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/Company_product_structure.png?raw=true)
 
 ---------------------
