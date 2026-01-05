@@ -1,5 +1,30 @@
 # Ad-hoc-Consumer-Goods-Insights-CRPC-4
 
+### About Company
+Atliq Hardware is a leading computer hardware manufacturer based in India, with a strong global presence across 26 countries. The company specializes in three major product divisions: Peripherals & Accessories, PC, Networking & Storage.
+
+With a diverse customer base of 74 clients—including prominent names like Neptune, Sage, Leader, and Vijay Sales—Atliq Hardware serves markets worldwide.
+
+Recently, the management identified a need for deeper, faster insights into sales and performance data to support agile, data-informed decision-making. This has led to the initiation of a data analytics project aimed at transforming raw sales data into actionable intelligence through SQL analysis and visualization.
+
+-------------------------
+
+### Dataset View 
+#### 4 fact tables :
+- fact_sales_monthly
+- Fact_gross_price
+- fact_manufacturing_cost
+- fact_pre_invoice_deduction
+
+#### 2 dimensional tables :
+- dim_customer
+- dim_product
+
+- Fiscal year for AtliQ Hardware :- 1st September to 31st August
+
+- Sales data is available for fiscal year 2020-2021
+
+-----------------------------
 
 
 ### 1.Provide the list of markets in which customer  "Atliq  Exclusive"  operates its business in the  APAC  region. 
