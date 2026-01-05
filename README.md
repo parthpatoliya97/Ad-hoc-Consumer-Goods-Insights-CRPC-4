@@ -1,6 +1,6 @@
 # Ad-hoc-Consumer-Goods-Insights-CRPC-4
 
-### About Company
+## About Company :
 - Atliq Hardware is a leading computer hardware manufacturer based in India, with a strong global presence across 26 countries. The company specializes in three major product divisions: Peripherals & Accessories, PC, Networking & Storage.
 
 - With a diverse customer base of 74 clients—including prominent names like Neptune, Sage, Leader, and Vijay Sales—Atliq Hardware serves markets worldwide.
@@ -9,28 +9,22 @@
 
 -------------------------
 
-### Company Product Structure, Platform & Market Channel
+## Company Product Structure, Platform & Market Channel :
 ![product_structure](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/Company_product_structure.png?raw=true)
 
 ---------------------
 
-### Dataset View 
-#### 4 fact tables :
-- fact_sales_monthly
-- Fact_gross_price
-- fact_manufacturing_cost
-- fact_pre_invoice_deduction
+## Dataset View :
+![data-model](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/data_model.png?raw=true)
 
-#### 2 dimensional tables :
-- dim_customer
-- dim_product
+-----------------------------------------
 
 - Fiscal year for AtliQ Hardware :- 1st September to 31st August
-
 - Sales data is available for fiscal year 2020-2021
 
 -----------------------------
 
+## Ad-hoc Requests & its Solutions :
 
 ### 1.Provide the list of markets in which customer  "Atliq  Exclusive"  operates its business in the  APAC  region. 
 
@@ -67,7 +61,7 @@ SELECT
     ) AS percent_change
 FROM unique_products_yearly;
 ```
-![br-2]()
+![br-2](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/br-update.png?raw=true)
 
 ### 3.Provide a report with all the unique product counts for each  segment  and sort them in descending order of product counts. The final output contains 2 fields, 
 - segment 
