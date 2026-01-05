@@ -9,6 +9,11 @@
 
 -------------------------
 
+### Company Product Structure
+![product_structure](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/Company_product_structure.png?raw=true)
+
+---------------------
+
 ### Dataset View 
 #### 4 fact tables :
 - fact_sales_monthly
@@ -34,6 +39,7 @@ SELECT
     DISTINCT market FROM  dim_customer
 WHERE region = 'APAC' AND customer = "Atliq Exclusive";
 ```
+![br-1](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/br-1.png?raw=true)
 
 ### 2. What is the percentage of unique product increase in 2021 vs. 2020? The final output contains these fields, 
 - unique_products_2020 
@@ -61,6 +67,7 @@ SELECT
     ) AS percent_change
 FROM unique_products_yearly;
 ```
+![br-2]()
 
 ### 3.Provide a report with all the unique product counts for each  segment  and sort them in descending order of product counts. The final output contains 2 fields, 
 - segment 
@@ -73,6 +80,7 @@ FROM dim_product
 GROUP BY segment
 ORDER BY unique_products DESC
 ```
+![br-3](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/br-3.png?raw=true)
 
 ### 4.Follow-up: Which segment had the most increase in unique products in 2021 vs 2020? The final output contains these fields, 
 - segment 
@@ -102,8 +110,8 @@ SELECT
 FROM yearly_data
 GROUP BY segment
 ORDER BY products_difference DESC;
-
 ```
+![br-4](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/br-4.png?raw=true)
 
 ### 5.Get the products that have the highest and lowest manufacturing costs. The final output should contain these fields, 
 - product_code 
@@ -126,6 +134,7 @@ WHERE m.manufacturing_cost = (
         FROM fact_manufacturing_cost
     );
 ```
+![br-5](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/br-5.png?raw=true)
 
 ### 6. Generate a report which contains the top 5 customers who received an average high  pre_invoice_discount_pct  for the  fiscal  year 2021  and in the Indian  market. The final output contains these fields, 
 - customer_code 
@@ -149,6 +158,7 @@ ORDER BY
 LIMIT 5;
 
 ```
+![br-6](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/br-6.png?raw=true)
 
 ### 7.Get the complete report of the Gross sales amount for the customer  “Atliq Exclusive”  for each month  .  This analysis helps to  get an idea of low and high-performing months and take strategic decisions. The final report contains these columns: 
 - Month 
@@ -169,6 +179,7 @@ WHERE c.customer = 'Atliq Exclusive'
 GROUP BY month_name, year_
 ORDER BY year_;
 ```
+![br-7](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/br-7.png?raw=true)
 
 ### 8.In which quarter of 2020, got the maximum total_sold_quantity? The final output contains these fields sorted by the total_sold_quantity, 
 - Quarter 
@@ -193,6 +204,7 @@ ORDER BY
         WHEN 'Q4' THEN 4
     END;
 ```
+![br-8](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/br-8.png?raw=true)
 
 ### 9.Which channel helped to bring more gross sales in the fiscal year 2021 and the percentage of contribution?  The final output  contains these fields, 
 - channel 
@@ -221,6 +233,7 @@ WHERE s.fiscal_year = 2021
 GROUP BY c.channel
 ORDER BY gross_sales DESC;
 ```
+![br-9](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/br-9.png?raw=true)
 
 ### 10.Get the Top 3 products in each division that have a high 
 total_sold_quantity in the fiscal_year 2021? The final output contains these fields, 
@@ -263,3 +276,4 @@ FROM ranking
 WHERE rank_order <= 3
 ORDER BY division, rank_order;
 ```
+![br-10](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/br-10.png?raw=true)
