@@ -2,7 +2,7 @@
 
 
 
-### 1.Provide the list of markets in which customer  "Atliq  Exclusive"  operates its business in the  APAC  region. 
+##### 1.Provide the list of markets in which customer  "Atliq  Exclusive"  operates its business in the  APAC  region. 
 
 ```sql
 SELECT
@@ -35,7 +35,6 @@ SELECT
         2
     ) AS percent_change
 FROM unique_products_yearly;
-
 ```
 
 ### 3.Provide a report with all the unique product counts for each  segment  and sort them in descending order of product counts. The final output contains 2 fields, 
@@ -88,7 +87,7 @@ ORDER BY products_difference DESC;
 ```sql
 SELECT
     p.product_code,
-    p.product,
+    CONCAT(p.product, ' (', p.variant, ')') AS product,
     m.manufacturing_cost
 FROM dim_product p
 JOIN fact_manufacturing_cost m
@@ -131,24 +130,19 @@ LIMIT 5;
 - Year 
 - Gross sales Amount
 ```sql
-SELECT
-    MONTHNAME(s.date) AS month_,
-    s.fiscal_year,
-    ROUND(SUM(s.sold_quantity * g.gross_price),2) AS gross_sales
-FROM fact_sales_monthly s
-JOIN fact_gross_price g
-    ON s.product_code = g.product_code
-   AND s.fiscal_year = g.fiscal_year
-JOIN dim_customer c
-    ON s.customer_code = c.customer_code
+SELECT 
+       MONTHNAME(date) AS month_name,
+       YEAR(date) AS year_, 
+       CONCAT(ROUND(SUM(a.sold_quantity * b.gross_price)/1000000,2),'M') AS gross_sales 
+FROM fact_sales_monthly AS a
+INNER JOIN fact_gross_price AS b
+ON b.product_code = a.product_code
+AND b.fiscal_year = a.fiscal_year
+INNER JOIN dim_customer AS c
+ON c.customer_code = a.customer_code
 WHERE c.customer = 'Atliq Exclusive'
-GROUP BY
-    MONTH(s.date),
-    MONTHNAME(s.date),
-    s.fiscal_year
-ORDER BY
-    s.fiscal_year,
-    MONTH(s.date);
+GROUP BY month_name, year_
+ORDER BY year_;
 ```
 
 ### 8.In which quarter of 2020, got the maximum total_sold_quantity? The final output contains these fields sorted by the total_sold_quantity, 
@@ -173,7 +167,6 @@ ORDER BY
         WHEN 'Q3' THEN 3
         WHEN 'Q4' THEN 4
     END;
-
 ```
 
 ### 9.Which channel helped to bring more gross sales in the fiscal year 2021 and the percentage of contribution?  The final output  contains these fields, 
@@ -181,20 +174,29 @@ ORDER BY
 - gross_sales_mln 
 - percentage
 ```sql
-select
-c.channel,
-sum(s.sold_quantity*g.gross_price) as gross_sales,
-sum(s.sold_quantity*g.gross_price) /(select
-sum(s.sold_quantity*g.gross_price) as gross_sales
-from fact_sales_monthly s 
-join fact_gross_price g on s.product_code=g.product_code
-where s.fiscal_year=2021) as percent_contribution
+SELECT
+    c.channel,
+    CONCAT(ROUND(SUM(s.sold_quantity * g.gross_price) / 1000000, 2),' M') AS gross_sales,
+    CONCAT(
+        ROUND(
+            SUM(s.sold_quantity * g.gross_price) * 100.0 /
+            (
+                SELECT SUM(s2.sold_quantity * g2.gross_price)
+                FROM fact_sales_monthly s2
+                JOIN fact_gross_price g2
+                    ON s2.product_code = g2.product_code
+                WHERE s2.fiscal_year = 2021
+            ),2),' %') AS percent_contribution
+FROM fact_sales_monthly s
+JOIN fact_gross_price g
+    ON s.product_code = g.product_code
+JOIN dim_customer c
+    ON s.customer_code = c.customer_code
+WHERE s.fiscal_year = 2021
+GROUP BY c.channel
+ORDER BY gross_sales DESC;
+<img width="1258" height="653" alt="image" src="https://github.com/user-attachments/assets/7d471312-c008-4aa7-bbc3-4f6b432aff76" />
 
-from fact_sales_monthly s 
-join fact_gross_price g on s.product_code=g.product_code
-join dim_customer c on s.customer_code=c.customer_code
-where s.fiscal_year=2021
-group by c.channel
 
 ```
 
@@ -207,35 +209,38 @@ total_sold_quantity in the fiscal_year 2021? The final output contains these fie
 - rank_order 
 ```sql
 WITH total_sold_units AS (
-    SELECT
-        p.division,
-        p.product_code,
-        p.product,
-        SUM(s.sold_quantity) AS total_sold_quantity
-    FROM fact_sales_monthly s
-    JOIN dim_product p
-        ON s.product_code = p.product_code
-    WHERE s.fiscal_year = 2021
-    GROUP BY
-        p.division,
-        p.product_code,
-        p.product
+    SELECT
+        p.division,
+        p.product_code,
+        CONCAT(p.product, ' (', p.variant, ')') AS product,
+        SUM(s.sold_quantity) AS total_sold_quantity
+    FROM fact_sales_monthly s
+    JOIN dim_product p
+        ON s.product_code = p.product_code
+    WHERE s.fiscal_year = 2021
+    GROUP BY
+        p.division,
+        p.product_code,
+        p.product,
+        p.variant
 ),
 ranking AS (
-    SELECT
-        division,
-        product_code,
-        product,
-        total_sold_quantity,
-        DENSE_RANK() OVER (
-            PARTITION BY division
-            ORDER BY total_sold_quantity DESC
-        ) AS rank_order
-    FROM total_sold_units
+    SELECT
+        division,
+        product_code,
+        product,
+        total_sold_quantity,
+        DENSE_RANK() OVER (
+            PARTITION BY division
+            ORDER BY total_sold_quantity DESC
+        ) AS rank_order
+    FROM total_sold_units
 )
 SELECT *
 FROM ranking
 WHERE rank_order <= 3
 ORDER BY division, rank_order;
+<img width="844" height="957" alt="image" src="https://github.com/user-attachments/assets/7057b2ff-ea7e-44f4-ba6b-148d364d6c15" />
+
 
 ```
