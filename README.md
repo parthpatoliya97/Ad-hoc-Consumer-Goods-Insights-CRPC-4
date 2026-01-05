@@ -1,11 +1,11 @@
 # Ad-hoc-Consumer-Goods-Insights-CRPC-4
 
 ### About Company
-Atliq Hardware is a leading computer hardware manufacturer based in India, with a strong global presence across 26 countries. The company specializes in three major product divisions: Peripherals & Accessories, PC, Networking & Storage.
+- Atliq Hardware is a leading computer hardware manufacturer based in India, with a strong global presence across 26 countries. The company specializes in three major product divisions: Peripherals & Accessories, PC, Networking & Storage.
 
-With a diverse customer base of 74 clients—including prominent names like Neptune, Sage, Leader, and Vijay Sales—Atliq Hardware serves markets worldwide.
+- With a diverse customer base of 74 clients—including prominent names like Neptune, Sage, Leader, and Vijay Sales—Atliq Hardware serves markets worldwide.
 
-Recently, the management identified a need for deeper, faster insights into sales and performance data to support agile, data-informed decision-making. This has led to the initiation of a data analytics project aimed at transforming raw sales data into actionable intelligence through SQL analysis and visualization.
+- Recently, the management identified a need for deeper, faster insights into sales and performance data to support agile, data-informed decision-making. This has led to the initiation of a data analytics project aimed at transforming raw sales data into actionable intelligence through SQL analysis and visualization.
 
 -------------------------
 
