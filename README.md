@@ -195,9 +195,6 @@ JOIN dim_customer c
 WHERE s.fiscal_year = 2021
 GROUP BY c.channel
 ORDER BY gross_sales DESC;
-<img width="1258" height="653" alt="image" src="https://github.com/user-attachments/assets/7d471312-c008-4aa7-bbc3-4f6b432aff76" />
-
-
 ```
 
 ### 10.Get the Top 3 products in each division that have a high 
@@ -240,7 +237,4 @@ SELECT *
 FROM ranking
 WHERE rank_order <= 3
 ORDER BY division, rank_order;
-<img width="844" height="957" alt="image" src="https://github.com/user-attachments/assets/7057b2ff-ea7e-44f4-ba6b-148d364d6c15" />
-
-
 ```
