@@ -322,6 +322,6 @@ ORDER BY division, rank_order;
 ```
 ![br-10](https://github.com/parthpatoliya97/Ad-hoc-Consumer-Goods-Insights-CRPC-4/blob/main/Images/br-10.png?raw=true)
 
-- N&S : Top selling product is AQ Pen Drive 2 IN 1 with a total of 7,01,373 quantities sold, followed by two variants of AQ Pen Drive DRC with 6,88,003 and 6,76,245 quantity.
-- P&A : AQ Gamers Ms is top selling product with a total of 4,28,498 quantities sold, followed by two variants of AQ Maxima Ms
-- PC : AQ Digit is top selling product with a total of 17,434 quantities 
+- N&S : Top selling product is **AQ Pen Drive 2 IN 1** with a total of **7,01,373** quantities sold, followed by two variants of **AQ Pen Drive DRC** with **6,88,003** and **6,76,245** quantity.
+- P&A : **AQ Gamers Ms** is top selling product with a total of **4,28,498** quantities sold, followed by two variants of **AQ Maxima Ms**
+- PC : **AQ Digit** is top selling product with a total of **17,434** quantities 
